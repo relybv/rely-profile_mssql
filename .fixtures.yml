@@ -1,0 +1,12 @@
+fixtures:
+  repositories:
+    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+
+# profile module layout, default include ntp module
+    rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
+    powershell: "https://github.com/puppetlabs/puppetlabs-powershell.git"
+    firewall: "https://github.com/gildas/puppet-firewall.git"
+    sqlserver: "https://github.com/gildas/puppet-sqlserver.git"
+
+  symlinks:
+    profile_mssql: "#{source_dir}"
