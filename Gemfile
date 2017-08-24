@@ -10,7 +10,6 @@ group :test do
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
   gem 'ci_reporter_rspec', '>= 1.0.0'
-
   gem "puppet-lint-leading_zero-check"
   gem "puppet-lint-trailing_comma-check"
   gem "puppet-lint-version_comparison-check"
