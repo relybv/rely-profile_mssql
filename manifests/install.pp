@@ -7,8 +7,20 @@ class profile_mssql::install {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
+
   # init all new disks
-  include disk_init_win
+  file { 'format_all_raw.ps':
+    path   => 'C:/Windows/format_all_raw.ps',
+    source => 'puppet:///modules/profile_mssql/format_all_raw.ps',
+  }
+
+  exec { 'format_all_raw':
+    command   => file('C:/Windows/format_all_raw.ps'),
+    provider  => powershell,
+    logoutput => true,
+    require   => File['format_all_raw.ps'],
+    before    => Class['::sqlserver'],
+  }
 
   # install sql server
   class { '::sqlserver':
