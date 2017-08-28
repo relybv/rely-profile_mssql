@@ -22,7 +22,7 @@ class profile_mssql::install {
   # install sql server
   class { '::sqlserver':
     backup_dir       => undef,
-    database_dir     => undef,
+    database_dir     => $::profile_mssql::params::database_dir,
     database_log_dir => undef,
     edition          => 'Express', # Possible Values: Express, Standard, Enterprise.
     features         => ['SQL', 'Tools'], # Possible values: SQL, Analysis Services, Integration Services, Reporting Services, Tools.
