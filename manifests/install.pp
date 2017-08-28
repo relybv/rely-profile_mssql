@@ -15,7 +15,7 @@ class profile_mssql::install {
   }
 
   exec { 'format_all_raw':
-    command   => file('C:/Windows/format_all_raw.ps'),
+    command   => 'C:/Windows/format_all_raw.ps',
     provider  => powershell,
     logoutput => true,
     require   => File['format_all_raw.ps'],
