@@ -9,16 +9,10 @@ class profile_mssql::install {
   }
 
   # init all new disks
-  file { 'format_all_raw.ps':
-    path   => 'C:/Windows/format_all_raw.ps',
-    source => 'puppet:///modules/profile_mssql/format_all_raw.ps',
-  }
-
   exec { 'format_all_raw':
-    command   => 'C:/Windows/format_all_raw.ps',
+    command   => file('format_all_raw.ps'),
     provider  => powershell,
     logoutput => true,
-    require   => File['format_all_raw.ps'],
     before    => Class['::sqlserver'],
   }
 
