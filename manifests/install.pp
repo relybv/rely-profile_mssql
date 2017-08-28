@@ -10,7 +10,7 @@ class profile_mssql::install {
 
   # init all new disks
   exec { 'format_all_raw':
-    command   => file('format_all_raw.ps'),
+    command   => file('profile_mssql/format_all_raw.ps'),
     provider  => powershell,
     logoutput => true,
     before    => Class['::sqlserver'],
