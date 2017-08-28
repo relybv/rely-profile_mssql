@@ -6,6 +6,8 @@ fixtures:
     rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
     powershell: "https://github.com/puppetlabs/puppetlabs-powershell.git"
     firewall: "https://github.com/gildas/puppet-firewall.git"
+    winntp: "https://github.com/puppetlabs/tse-module-winntp.git"
+    registry: "https://github.com/puppetlabs/puppetlabs-registry.git"
     sqlserver: "https://github.com/gildas/puppet-sqlserver.git"
 
   symlinks:
