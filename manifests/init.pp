@@ -10,6 +10,7 @@
 class profile_mssql
 (
   $monitor_address = $::profile_mssql::params::monitor_address,
+  $productionlevel = 'test', # options: test, acceptance and production
 ) inherits ::profile_mssql::params {
 
   if $monitor_address != undef {

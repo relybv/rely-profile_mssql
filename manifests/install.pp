@@ -21,17 +21,17 @@ class profile_mssql::install {
 
   # install sql server
   class { '::sqlserver':
-    backup_dir       => undef,
+    backup_dir       => $::profile_mssql::params::backup_dir,
     database_dir     => $::profile_mssql::params::database_dir,
-    database_log_dir => undef,
-    edition          => 'Express', # Possible Values: Express, Standard, Enterprise.
-    features         => ['SQL', 'Tools'], # Possible values: SQL, Analysis Services, Integration Services, Reporting Services, Tools.
-    force_english    => true,
-    instance_dir     => undef,
-    instance_name    => 'MSSQLSERVER',
-    license          => undef,  # license key from Microsoft. The value is ignored for SQL Express and for the Evaluation edition
-    license_type     => 'Evaluation', # Possible Values: Evaluation, MSDN, Volume, Retail
-    sa_password      => undef, # If provided, SQL Server will be installed with Windows and SQL authentication.
-    source           => undef, # specifies the path of the ISO containing the SQL Server installation
+    database_log_dir => $::profile_mssql::params::database_log_dir,
+    edition          => $::profile_mssql::params::edition,
+    features         => $::profile_mssql::params::features,
+    force_english    => $::profile_mssql::params::force_english,
+    instance_dir     => $::profile_mssql::params::instance_dir,
+    instance_name    => $::profile_mssql::params::instance_name,
+    license          => $::profile_mssql::params::license,
+    license_type     => $::profile_mssql::params::license_type,
+    sa_password      => $::profile_mssql::params::sa_password,
+    source           => $::profile_mssql::params::source,
   }
 }
