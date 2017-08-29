@@ -23,8 +23,10 @@ class profile_mssql::install {
     pget{'downloadmssql':
       source => $::profile_mssql::params::sqlurl,
       target => 'c:/windows/temp',
+      before => Class['::sqlserver'],
     }
   }
+
   # install sql server
   class { '::sqlserver':
     backup_dir       => $::profile_mssql::params::backup_dir,
