@@ -5,6 +5,7 @@
 #
 class profile_mssql::params {
   $monitor_address = $::monitor_address
+  $productionlevel = 'production' # possible values: 'production', 'acceptance', 'test' (default)
   notice("Level = ${productionlevel}")
   notice("Level = ${::productionlevel}")
   notice("Level = ${profile_mssql::productionlevel}")
