@@ -6,8 +6,9 @@
 class profile_mssql::params {
   $monitor_address = $::monitor_address
   notice("Level = ${productionlevel}")
-  notice("Level = ${l::productionlevel}")
+  notice("Level = ${::productionlevel}")
   notice("Level = ${profile_mssql::productionlevel}")
+  notice("Level = ${::profile_mssql::productionlevel}")
   case $productionlevel {
     'production': {
       $backup_dir       = undef
