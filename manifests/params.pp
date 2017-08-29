@@ -7,18 +7,15 @@ class profile_mssql::params {
   $monitor_address = $::monitor_address
   $productionlevel = 'production' # possible values: 'production', 'acceptance', 'test' (default)
   notice("Level = ${productionlevel}")
-  notice("Level = ${::productionlevel}")
-  notice("Level = ${profile_mssql::productionlevel}")
-  notice("Level = ${::profile_mssql::productionlevel}")
   case $productionlevel {
     'production': {
       $backup_dir       = undef
-      $database_dir     = 'F:\SQLDB'
-      $database_log_dir = undef
+      $database_dir     = 'G:\SQLDB'
+      $database_log_dir = 'H:\SQLLOG'
       $edition          = 'Express' # Possible Values: Express, Standard, Enterprise.
       $features         = ['SQL', 'Tools'] # Possible values: SQL, Analysis Services, Integration Services, Reporting Services, Tools.
       $force_english    = true
-      $instance_dir     = undef
+      $instance_dir     = 'F:\MSSQL'
       $instance_name    = 'MSSQLSERVER'
       $license          = undef  # license key from Microsoft. The value is ignored for SQL Express and for the Evaluation edition
       $license_type     = 'Evaluation' # Possible Values: Evaluation, MSDN, Volume, Retail
