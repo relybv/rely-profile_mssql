@@ -19,6 +19,12 @@ class profile_mssql::install {
     before    => Class['::sqlserver'],
   }
 
+  if $productionlevel == 'production' {
+    pget{'downloadmssql':
+      source => $::profile_mssql::params::sqlurl,
+      target => 'c:/windows/temp',
+    }
+  }
   # install sql server
   class { '::sqlserver':
     backup_dir       => $::profile_mssql::params::backup_dir,
