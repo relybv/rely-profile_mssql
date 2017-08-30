@@ -44,6 +44,6 @@ class profile_mssql::install {
     license          => $::profile_mssql::params::license,
     license_type     => $::profile_mssql::params::license_type,
     sa_password      => $::profile_mssql::params::sa_password,
-    source           => $::profile_mssql::params::source,
+#    source           => $::profile_mssql::params::source,
   }
 }
