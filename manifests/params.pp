@@ -11,22 +11,14 @@ class profile_mssql::params {
       $sapwd            = 'changeme'
       $securitymode     = 'sql'
       $mode             = 'master'
+      $features         = 'SQL,Tools'
       $pid              = ''
       $sqluserdbdir     = 'F:\SQLDB'
       $sqltempdbdir     = 'G:\TMPDB'
       $sqluserdblogdir  = 'H:\SQLLOG\DB'
       $sqltempdblogdir  = 'H:\SQLLOG\TEMP'
       $instancedir      = ''
-      $backup_dir       = undef
-      $edition          = 'Standard' # Possible Values: Express, Standard, Enterprise.
-      $features         = 'SQL,Tools' # Possible values: SQL, Analysis Services, Integration Services, Reporting Services, Tools.
-      $force_english    = true
-      $instance_name    = 'MSSQLSERVER'
-      $license          = undef  # license key from Microsoft. The value is ignored for SQL Express and for the Evaluation edition
-      $license_type     = 'Evaluation' # Possible Values: Evaluation, MSDN, Volume, Retail
-      $sa_password      = undef # If provided, SQL Server will be installed with Windows and SQL authentication.
-      $isopath           = 'https://s3.amazonaws.com/rely-software/mssql/en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
-      $source           = '\\\windows\temp\en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
+      $isopath          = 'https://s3.amazonaws.com/rely-software/mssql/en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
     }
     default: {
       $sapwd            = 'changeme'
