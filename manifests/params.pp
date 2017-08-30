@@ -12,7 +12,7 @@ class profile_mssql::params {
       $database_dir     = 'G:\SQLDB'
       $database_log_dir = 'H:\SQLLOG'
       $edition          = 'Standard' # Possible Values: Express, Standard, Enterprise.
-      $features         = ['SQL,Tools'] # Possible values: SQL, Analysis Services, Integration Services, Reporting Services, Tools.
+      $features         = 'SQL,Tools' # Possible values: SQL, Analysis Services, Integration Services, Reporting Services, Tools.
       $force_english    = true
       $instance_dir     = 'F:\MSSQL'
       $instance_name    = 'MSSQLSERVER'
