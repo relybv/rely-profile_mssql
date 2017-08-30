@@ -8,17 +8,21 @@ class profile_mssql::params {
   $productionlevel = 'production' # possible values: 'production', 'acceptance', 'test' (default)
   case $productionlevel {
     'production': {
-      $sapwd            = 'changeme'
-      $securitymode     = 'sql'
-      $mode             = 'master'
-      $features         = 'SQL,Tools'
-      $pid              = ''
-      $sqluserdbdir     = 'F:\SQLDB'
-      $sqltempdbdir     = 'G:\TMPDB'
-      $sqluserdblogdir  = 'H:\SQLLOG\DB'
-      $sqltempdblogdir  = 'H:\SQLLOG\TEMP'
-      $instancedir      = ''
-      $isopath          = 'https://s3.amazonaws.com/rely-software/mssql/en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
+      $sapwd               = 'changeme'
+      $securitymode        = 'sql'
+      $mode                = 'master'
+      $features            = 'SQL,RS_SHP,RS_SHPWFE,TOOLS'
+      $pid                 = 'SYOUR-PRODU-CTKEY-OFSQL-2012S'
+      $sqlsysadminaccounts = 'SQLAdmin'
+      $agtsvcaccount       = 'svc_sqlagt'
+      $sqlsvcaccount       = 'svc_sqlsvc'
+
+      $sqluserdbdir        = 'F:\SQLDB'
+      $sqltempdbdir        = 'G:\TMPDB'
+      $sqluserdblogdir     = 'H:\SQLLOG\DB'
+      $sqltempdblogdir     = 'H:\SQLLOG\TEMP'
+      $instancedir         = ''
+      $isopath             = 'https://s3.amazonaws.com/rely-software/mssql/en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
     }
     default: {
       $sapwd            = 'changeme'
