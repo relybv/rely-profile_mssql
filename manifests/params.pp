@@ -8,6 +8,7 @@ class profile_mssql::params {
   $productionlevel = 'production' # possible values: 'production', 'acceptance', 'test' (default)
   case $productionlevel {
     'production': {
+      $sapwd            = 'changeme'
       $backup_dir       = undef
       $database_dir     = 'G:\SQLDB'
       $database_log_dir = 'H:\SQLLOG'
@@ -23,6 +24,7 @@ class profile_mssql::params {
       $source           = '\\\windows\temp\en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
     }
     default: {
+      $sapwd            = 'changeme'
       $backup_dir       = undef
       $database_dir     = undef
       $database_log_dir = undef
