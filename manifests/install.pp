@@ -8,7 +8,6 @@ class profile_mssql::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  notice("Level = ${profile_mssql::productionlevel}")
   # install network time sync
   include 'winntp'
 
@@ -22,6 +21,7 @@ class profile_mssql::install {
 
   if $profile_mssql::productionlevel == 'production' {
     notice("Level = ${profile_mssql::productionlevel}")
+    notice("url = $::profile_mssql::params::sqlurl")
     pget{'downloadmssql':
       source => $::profile_mssql::params::sqlurl,
       target => 'c:/windows/temp',
