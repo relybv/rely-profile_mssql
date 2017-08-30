@@ -21,6 +21,7 @@ class profile_mssql::install {
   }
 
   if $profile_mssql::productionlevel == 'production' {
+    notice("Level = ${profile_mssql::productionlevel}")
     pget{'downloadmssql':
       source => $::profile_mssql::params::sqlurl,
       target => 'c:/windows/temp',
