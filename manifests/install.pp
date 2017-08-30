@@ -23,9 +23,11 @@ class profile_mssql::install {
     notice("Level = ${profile_mssql::productionlevel}")
     notice("url = $::profile_mssql::params::sqlurl")
     pget{'downloadmssql':
-      source => $::profile_mssql::params::sqlurl,
-      target => 'c:/windows/temp/mssql.iso',
-      before => Class['::sqlserver'],
+      source         => $::profile_mssql::params::sqlurl,
+      target         => 'c:/windows/temp/',
+      targetfilename => 'mssql.iso',
+      overwrite      => true,
+      before         => Class['::sqlserver'],
     }
   }
 
