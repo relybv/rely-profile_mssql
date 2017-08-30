@@ -19,18 +19,6 @@ class profile_mssql::install {
     before    => Class['windows_sql'],
   }
 
-#  if $profile_mssql::productionlevel == 'production' {
-#    notice("Level = ${profile_mssql::productionlevel}")
-#    notice("url = $::profile_mssql::params::sqlurl")
-#    pget{'downloadmssql':
-#      source         => $::profile_mssql::params::sqlurl,
-#      target         => 'c:/windows/temp/',
-#      targetfilename => 'mssql.iso',
-#      overwrite      => true,
-#      notify         => Class['::sqlserver'],
-#    }
-#  }
-
   # install sql server
   class {'windows_sql':
     features            => $::profile_mssql::params::features,
@@ -39,15 +27,11 @@ class profile_mssql::install {
     sqluserdblogdir     => $::profile_mssql::params::sqluserdblogdir,
     sqltempdbdir        => $::profile_mssql::params::sqltempdbdir,
     sqltempdblogdir     => $::profile_mssql::params::sqltempdblogdir,
-
-#    pid                 => 'SYOUR-PRODU-CTKEY-OFSQL-2012S',
-#    sqlsysadminaccounts => 'SQLAdmin',
-#    agtsvcaccount       => 'svc_sqlagt',
+    pid                 => $::profile_mssql::params::pid,
     isopath             => $::profile_mssql::params::isopath,
-#    sqlsvcaccount       => 'svc_sqlsvc',
-    securitymode        => 'sql',
+    securitymode        => $::profile_mssql::params::securitymode,,
     sapwd               => $::profile_mssql::params::sapwd,
-    mode                => 'master',
+    mode                => $::profile_mssql::params::mode,
   }
 
 #  class { '::sqlserver':

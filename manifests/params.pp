@@ -9,13 +9,18 @@ class profile_mssql::params {
   case $productionlevel {
     'production': {
       $sapwd            = 'changeme'
+      $securitymode     = 'sql'
+      $mode             = 'master'
+      $pid              = ''
+      $sqluserdbdir     = 'F:\SQLDB'
+      $sqltempdbdir     = 'G:\TMPDB'
+      $sqluserdblogdir  = 'H:\SQLLOG\DB'
+      $sqltempdblogdir  = 'H:\SQLLOG\TEMP'
+
       $backup_dir       = undef
-      $database_dir     = 'G:\SQLDB'
-      $database_log_dir = 'H:\SQLLOG'
       $edition          = 'Standard' # Possible Values: Express, Standard, Enterprise.
       $features         = 'SQL,Tools' # Possible values: SQL, Analysis Services, Integration Services, Reporting Services, Tools.
       $force_english    = true
-      $instance_dir     = 'F:\MSSQL'
       $instance_name    = 'MSSQLSERVER'
       $license          = undef  # license key from Microsoft. The value is ignored for SQL Express and for the Evaluation edition
       $license_type     = 'Evaluation' # Possible Values: Evaluation, MSDN, Volume, Retail
