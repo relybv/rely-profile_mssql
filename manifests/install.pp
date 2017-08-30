@@ -8,7 +8,9 @@ class profile_mssql::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  notice("Level = ${productionlevel}")
+  notice("Level = ${::productionlevel}")
+  notice("Level = ${profile_mssql::productionlevel}")
+  notice("Level = ${::profile_mssql::productionlevel}")
   # install network time sync
   include 'winntp'
 
