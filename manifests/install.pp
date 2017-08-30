@@ -46,7 +46,7 @@ class profile_mssql::install {
     isopath             => $::profile_mssql::params::isopath,
 #    sqlsvcaccount       => 'svc_sqlsvc',
     securitymode        => 'sql',
-    sapwd               => $::profile_mssql::params::sapwd,,
+    sapwd               => $::profile_mssql::params::sapwd,
     mode                => 'master',
   }
 
