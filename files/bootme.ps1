@@ -85,7 +85,7 @@
   }
   Write-Host "$puppet_module successfully installed."
 
-  $puppet_module = "insentia/windows_sql"
+  $puppet_module = "jriviere/windows_sql"
   $puppet_arg = $puppet_modinst + $puppet_module
   $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow
   if ($process.ExitCode -ne 0) {
@@ -104,15 +104,6 @@
   Write-Host "$puppet_module successfully installed."
 
   $puppet_module = "tse/winntp"
-  $puppet_arg = $puppet_modinst + $puppet_module
-  $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow
-  if ($process.ExitCode -ne 0) {
-    Write-Host "Install of $puppet_module failed."
-    Exit 1
-  }
-  Write-Host "$puppet_module successfully installed."
-
-  $puppet_module = "gildas-sqlserver"
   $puppet_arg = $puppet_modinst + $puppet_module
   $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow
   if ($process.ExitCode -ne 0) {
