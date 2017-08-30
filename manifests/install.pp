@@ -29,7 +29,7 @@ class profile_mssql::install {
     sqltempdblogdir     => $::profile_mssql::params::sqltempdblogdir,
     pid                 => $::profile_mssql::params::pid,
     isopath             => $::profile_mssql::params::isopath,
-    securitymode        => $::profile_mssql::params::securitymode,,
+    securitymode        => $::profile_mssql::params::securitymode,
     sapwd               => $::profile_mssql::params::sapwd,
     mode                => $::profile_mssql::params::mode,
   }
