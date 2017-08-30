@@ -24,7 +24,7 @@ class profile_mssql::install {
     notice("url = $::profile_mssql::params::sqlurl")
     pget{'downloadmssql':
       source => $::profile_mssql::params::sqlurl,
-      target => 'c:/windows/temp',
+      target => 'c:/windows/temp/',
       before => Class['::sqlserver'],
     }
   }
