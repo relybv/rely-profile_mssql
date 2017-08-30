@@ -16,7 +16,7 @@ class profile_mssql::params {
       $sqltempdbdir     = 'G:\TMPDB'
       $sqluserdblogdir  = 'H:\SQLLOG\DB'
       $sqltempdblogdir  = 'H:\SQLLOG\TEMP'
-
+      $instancedir      = ''
       $backup_dir       = undef
       $edition          = 'Standard' # Possible Values: Express, Standard, Enterprise.
       $features         = 'SQL,Tools' # Possible values: SQL, Analysis Services, Integration Services, Reporting Services, Tools.
