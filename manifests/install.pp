@@ -26,7 +26,7 @@ class profile_mssql::install {
       source         => $::profile_mssql::params::sqlurl,
       target         => 'c:/windows/temp/',
       targetfilename => 'mssql.iso',
-      overwrite      => true,
+#      overwrite      => true,
 #      before         => Class['::sqlserver'],
     }
   }
