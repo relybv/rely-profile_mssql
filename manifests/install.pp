@@ -16,7 +16,7 @@ class profile_mssql::install {
     command   => file('profile_mssql/format_all_raw.ps1'),
     provider  => powershell,
     logoutput => true,
-    before    => Class['::sqlserver'],
+#    before    => Class['::sqlserver'],
   }
 
   if $profile_mssql::productionlevel == 'production' {
