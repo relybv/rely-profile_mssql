@@ -20,7 +20,7 @@ class profile_mssql::params {
       $license          = undef  # license key from Microsoft. The value is ignored for SQL Express and for the Evaluation edition
       $license_type     = 'Evaluation' # Possible Values: Evaluation, MSDN, Volume, Retail
       $sa_password      = undef # If provided, SQL Server will be installed with Windows and SQL authentication.
-      $sqlurl           = 'https://s3.amazonaws.com/rely-software/mssql/en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
+      $isopath           = 'https://s3.amazonaws.com/rely-software/mssql/en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
       $source           = '\\\windows\temp\en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
     }
     default: {
