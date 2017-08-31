@@ -85,6 +85,15 @@
   }
   Write-Host "$puppet_module successfully installed."
 
+  $puppet_module = "cyberious/pget"
+  $puppet_arg = $puppet_modinst + $puppet_module
+  $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow
+  if ($process.ExitCode -ne 0) {
+    Write-Host "Install of $puppet_module failed."
+    Exit 1
+  }
+  Write-Host "$puppet_module successfully installed."
+
   $puppet_module = "jriviere/windows_sql"
   $puppet_arg = $puppet_modinst + $puppet_module
   $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow

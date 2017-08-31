@@ -8,6 +8,7 @@ fixtures:
     firewall: "https://github.com/gildas/puppet-firewall.git"
     winntp: "https://github.com/puppetlabs/tse-module-winntp.git"
     registry: "https://github.com/puppetlabs/puppetlabs-registry.git"
+    pget: "https://github.com/cyberious/puppet-pget.git"
     windows_sql: "https://github.com/insentia/windows_sql.git"
     windows_isos: "https://github.com/insentia/windows_isos.git"
 

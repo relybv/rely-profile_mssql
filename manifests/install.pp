@@ -19,13 +19,19 @@ class profile_mssql::install {
     before    => Class['windows_sql'],
   }
 
+  pget { 'download mssql':
+    source => $::profile_mssql::params::isourl,
+    target => 'C:\windows\temp',
+    before => Class['windows_sql'],
+  }
+
   # install sql server
 class {'windows_sql':
   features            => 'SQL,TOOLS',
-  pid                 => 'YFC4R-BRRWB-TVP9Y-6WJQ9-MCJQ7',
+#  pid                 => 'YFC4R-BRRWB-TVP9Y-6WJQ9-MCJQ7',
   sqlsysadminaccounts => 'SQLAdmin',
   agtsvcaccount       => 'svc_sqlagt',
-  isopath             => 'C:\\en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso',
+  isopath             => 'C:\\windows\temp\en_sql_server_2012_enterprise_edition_with_service_pack_2_x64_dvd_4685849.iso',
   sqlsvcaccount       => 'svc_sqlsvc',
   securitymode        => 'sql',
   sapwd               => 'MySup3rGre@tp@ssw0rDO3nOT',
