@@ -19,7 +19,7 @@ describe 'profile_mssql' do
           it { is_expected.to contain_class('profile_mssql::install') }
           it { is_expected.to contain_class('profile_mssql::config') }
           it { is_expected.to contain_class('profile_mssql::service') }
-          it { is_expected.to contain_class('sqlserver') }
+          it { is_expected.to contain_class('windows_sql') }
 
         end
       end

@@ -9,6 +9,7 @@ fixtures:
     winntp: "https://github.com/puppetlabs/tse-module-winntp.git"
     registry: "https://github.com/puppetlabs/puppetlabs-registry.git"
     windows_sql: "https://github.com/insentia/windows_sql.git"
+    windows_isos: "https://github.com/insentia/windows_isos.git"
 
   symlinks:
     profile_mssql: "#{source_dir}"
