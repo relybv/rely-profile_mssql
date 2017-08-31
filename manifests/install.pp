@@ -20,22 +20,33 @@ class profile_mssql::install {
   }
 
   # install sql server
-  class {'windows_sql':
-    features            => $::profile_mssql::params::features,
-    instancedir         => $::profile_mssql::params::instancedir,
-    sqluserdbdir        => $::profile_mssql::params::sqluserdbdir,
-    sqluserdblogdir     => $::profile_mssql::params::sqluserdblogdir,
-    sqltempdbdir        => $::profile_mssql::params::sqltempdbdir,
-    sqltempdblogdir     => $::profile_mssql::params::sqltempdblogdir,
-    sqlsysadminaccounts => $::profile_mssql::params::sqlsysadminaccounts,
-    agtsvcaccount       => $::profile_mssql::params::agtsvcaccount,
-    sqlsvcaccount       => $::profile_mssql::params::sqlsvcaccount,
-    pid                 => $::profile_mssql::params::pid,
-    isopath             => $::profile_mssql::params::isopath,
-    securitymode        => $::profile_mssql::params::securitymode,
-    sapwd               => $::profile_mssql::params::sapwd,
-    mode                => $::profile_mssql::params::mode,
-  }
+class {'windows_sql':
+  features            => 'SQL,RS_SHP,RS_SHPWFE,TOOLS',
+  pid                 => 'SYOUR-PRODU-CTKEY-OFSQL-2012S',
+  sqlsysadminaccounts => 'SQLAdmin',
+  agtsvcaccount       => 'svc_sqlagt',
+  isopath             => 'C:\\Users\\Administrator\\Desktop\\SQLServer2012SP1-FullSlipstream-ENU-x64.iso',
+  sqlsvcaccount       => 'svc_sqlsvc',
+  securitymode        => 'sql',
+  sapwd               => 'MySup3rGre@tp@ssw0rDO3nOT',
+  mode                => 'master',
+}
+#  class {'windows_sql':
+#    features            => $::profile_mssql::params::features,
+#    instancedir         => $::profile_mssql::params::instancedir,
+#    sqluserdbdir        => $::profile_mssql::params::sqluserdbdir,
+#    sqluserdblogdir     => $::profile_mssql::params::sqluserdblogdir,
+#    sqltempdbdir        => $::profile_mssql::params::sqltempdbdir,
+#    sqltempdblogdir     => $::profile_mssql::params::sqltempdblogdir,
+#    sqlsysadminaccounts => $::profile_mssql::params::sqlsysadminaccounts,
+#    agtsvcaccount       => $::profile_mssql::params::agtsvcaccount,
+#    sqlsvcaccount       => $::profile_mssql::params::sqlsvcaccount,
+#    pid                 => $::profile_mssql::params::pid,
+#    isopath             => $::profile_mssql::params::isopath,
+#    securitymode        => $::profile_mssql::params::securitymode,
+#    sapwd               => $::profile_mssql::params::sapwd,
+#    mode                => $::profile_mssql::params::mode,
+#  }
 
 #  class { '::sqlserver':
 #    backup_dir       => $::profile_mssql::params::backup_dir,
