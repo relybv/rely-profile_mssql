@@ -31,6 +31,7 @@ class {'windows_sql':
 #  pid                 => 'YFC4R-BRRWB-TVP9Y-6WJQ9-MCJQ7',
   sqlsysadminaccounts => 'SQLAdmin',
   agtsvcaccount       => 'svc_sqlagt',
+  agtsvcpassword      => 'MySup3rGre@tp@ssw0rDO3nOT',
   isopath             => 'C:\\windows\temp\en_sql_server_2012_enterprise_edition_with_service_pack_2_x64_dvd_4685849.iso',
   sqlsvcaccount       => 'svc_sqlsvc',
   securitymode        => 'sql',
