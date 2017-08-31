@@ -21,8 +21,8 @@ class profile_mssql::install {
 
   # install sql server
 class {'windows_sql':
-  features            => 'SQL,RS_SHP,RS_SHPWFE,TOOLS',
-  pid                 => 'SYOUR-PRODU-CTKEY-OFSQL-2012S',
+  features            => 'SQL,TOOLS',
+#  pid                 => 'SYOUR-PRODU-CTKEY-OFSQL-2012S',
   sqlsysadminaccounts => 'SQLAdmin',
   agtsvcaccount       => 'svc_sqlagt',
   isopath             => 'C:\\en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso',
