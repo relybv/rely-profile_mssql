@@ -34,6 +34,7 @@ class {'windows_sql':
   agtsvcpassword      => 'MySup3rGre@tp@ssw0rDO3nOT',
   isopath             => 'C:\\windows\temp\en_sql_server_2012_enterprise_edition_with_service_pack_2_x64_dvd_4685849.iso',
   sqlsvcaccount       => 'svc_sqlsvc',
+  sqlsvcpassword      => 'MySup3rGre@tp@ssw0rDO3nOT',
   securitymode        => 'sql',
   sapwd               => 'MySup3rGre@tp@ssw0rDO3nOT',
   mode                => 'master',
