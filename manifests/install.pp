@@ -25,7 +25,7 @@ class {'windows_sql':
   pid                 => 'SYOUR-PRODU-CTKEY-OFSQL-2012S',
   sqlsysadminaccounts => 'SQLAdmin',
   agtsvcaccount       => 'svc_sqlagt',
-  isopath             => 'C:\\Users\\Administrator\\Desktop\\SQLServer2012SP1-FullSlipstream-ENU-x64.iso',
+  isopath             => 'C:\\en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso',
   sqlsvcaccount       => 'svc_sqlsvc',
   securitymode        => 'sql',
   sapwd               => 'MySup3rGre@tp@ssw0rDO3nOT',

@@ -23,7 +23,7 @@ class profile_mssql::params {
       $sqltempdblogdir     = 'H:\SQLLOG\TEMP'
       $instancedir         = ''
 #      $isopath             = 'https://s3.amazonaws.com/rely-software/mssql/en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
-      $isopath             = 'C:\en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
+      $isopath             = 'C:\\en_sql_server_2012_standard_edition_with_service_pack_2_x86_dvd_4689483.iso'
     }
     default: {
       $sapwd            = 'changeme'
