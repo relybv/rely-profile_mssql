@@ -7,7 +7,7 @@ class profile_mssql::install {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
-
+  notice("Running with media $media")
   # install network time sync
   include 'winntp'
 
