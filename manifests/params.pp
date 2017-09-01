@@ -21,6 +21,7 @@
 # $admin
 #
 class profile_mssql::params {
+  $productionlevel = 'production'
   $instancename   = 'MSSQLSERVER'
   $features       = 'SQLENGINE,CONN,SSMS,ADV_SSMS'
   $sapwd          = 'Sql!@as#2012demo' 
