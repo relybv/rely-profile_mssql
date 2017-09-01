@@ -58,7 +58,7 @@ class profile_mssql::install {
     content => template('profile_mssql/config.ini.erb'),
   }
 
-  dism { 'NetFx3':
+  dism { ['NetFx3ServerFeatures', 'NetFx3']:
     ensure => present,
   }
 
