@@ -38,20 +38,20 @@ class profile_mssql::install {
 
   user { 'SQLAGTSVC':
     comment  => 'SQL 2012 Agent Service.',
-    password => $::agtsvcpassword,
+    password => $::profile_mssql::agtsvcpassword,
   }
   user { 'SQLASSVC':
     comment  => 'SQL 2012 Analysis Service.',
-    password => $assvcpassword,
+    password => $::profile_mssql::assvcpassword,
   }
   user { 'SQLRSSVC':
     comment  => 'SQL 2012 Report Service.',
-    password => $rssvcpassword,
+    password => $::profile_mssql::rssvcpassword,
   }
   user { 'SQLSVC':
     comment  => 'SQL 2012 Service.',
     groups   => 'Administrators',
-    password => $sqlsvcpassword,
+    password => $::profile_mssql::sqlsvcpassword,
   }
 
   file { 'C:\sql2012install.ini':
@@ -63,11 +63,11 @@ class profile_mssql::install {
   }
 
   exec { 'install_mssql2012':
-    command   => "${profile_mssql::media}\\setup.exe /Action=Install /IACCEPTSQLSERVERLICENSETERMS /Q /HIDECONSOLE /CONFIGURATIONFILE=C:\\sql2012install.ini /SAPWD=\"${sapwd}\" /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\"",
+    command   => "${profile_mssql::media}\\setup.exe /Action=Install /IACCEPTSQLSERVERLICENSETERMS /Q /HIDECONSOLE /CONFIGURATIONFILE=C:\\sql2012install.ini /SAPWD=\"${::profile_mssql::sapwd}\" /SQLSVCPASSWORD=\"${::profile_mssql::sqlsvcpassword}\" /AGTSVCPASSWORD=\"${::profile_mssql::agtsvcpassword}\" /ASSVCPASSWORD=\"${::profile_mssql::assvcpassword}\" /RSSVCPASSWORD=\"${::profile_mssql::rssvcpassword}\"",
     cwd       => $profile_mssql::media,
     path      => $profile_mssql::media,
     logoutput => true,
-    creates   => $instancedir,
+    creates   => $::profile_mssql::instancedir,
     timeout   => 1200,
     require   => [ File['C:\sql2012install.ini'], Windows_isos['SQLServer'], Dism['NetFx3'] ],
   }
