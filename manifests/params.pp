@@ -38,4 +38,5 @@ class profile_mssql::params {
   $sqlcollation   = 'SQL_Latin1_General_CP1_CI_AS'
   $admin          = 'Administrator'
   $isourl         = 'https://s3.amazonaws.com/rely-software/mssql/en_sql_server_2012_enterprise_edition_with_service_pack_2_x64_dvd_4685849.iso'
+  $media          = 'D:\\'
 }

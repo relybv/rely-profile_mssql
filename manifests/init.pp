@@ -13,7 +13,7 @@ class profile_mssql
   $productionlevel = $profile_mssql::params::productionlevel,
 # See http://msdn.microsoft.com/en-us/library/ms144259.aspx
   # Media is required to install
-  $media          = 'D:\\',
+  $media          = $profile_mssql::params::media,,
   $instancename   = $profile_mssql::params::instancename,
   $features       = $profile_mssql::params::features,
   $sapwd          = $profile_mssql::params::sapwd,
