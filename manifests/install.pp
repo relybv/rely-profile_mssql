@@ -7,8 +7,6 @@ class profile_mssql::install {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
-  notice("Running with media $media")
-  notice("Running with media $::media")
   notice("Running with media $profile_mssql::media")
   # install network time sync
   include 'winntp'
@@ -65,9 +63,9 @@ class profile_mssql::install {
   }
 
   exec { 'install_mssql2012':
-    command   => "${media}\\setup.exe /Action=Install /IACCEPTSQLSERVERLICENSETERMS /Q /HIDECONSOLE /CONFIGURATIONFILE=C:\\sql2012install.ini /SAPWD=\"${sapwd}\" /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\"",
-    cwd       => $media,
-    path      => $media,
+    command   => "${profile_mssql::media}\\setup.exe /Action=Install /IACCEPTSQLSERVERLICENSETERMS /Q /HIDECONSOLE /CONFIGURATIONFILE=C:\\sql2012install.ini /SAPWD=\"${sapwd}\" /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\"",
+    cwd       => $profile_mssql::media,
+    path      => $profile_mssql::media,
     logoutput => true,
     creates   => $instancedir,
     timeout   => 1200,
