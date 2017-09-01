@@ -62,10 +62,8 @@ class profile_mssql::install {
     ensure => present,
   }
 
-# Setup.exe /q /ACTION=Install /FEATURES=SQL /INSTANCENAME=MSSQLSERVER /SQLSVCACCOUNT="<DomainName\UserName>" /SQLSVCPASSWORD="<StrongPassword>" /SQLSYSADMINACCOUNTS="<DomainName\UserName>" /AGTSVCACCOUNT="NT AUTHORITY\Network Service" /SQLSVCINSTANTFILEINIT="True" /IACCEPTSQLSERVERLICENSETERMS
-
   exec { 'install_mssql2012':
-    command   => "${profile_mssql::media}\\setup.exe /Action=Install /FEATURES=SQL /IACCEPTSQLSERVERLICENSETERMS /QS /HIDECONSOLE /CONFIGURATIONFILE=C:\\sql2012install.ini /SAPWD=\"${::profile_mssql::sapwd}\" /SQLSVCPASSWORD=\"${::profile_mssql::sqlsvcpassword}\" /AGTSVCPASSWORD=\"${::profile_mssql::agtsvcpassword}\" /ASSVCPASSWORD=\"${::profile_mssql::assvcpassword}\" /RSSVCPASSWORD=\"${::profile_mssql::rssvcpassword}\"",
+    command   => "${profile_mssql::media}\\setup.exe /ConfigurationFile=C:\sql2012install.ini /QS /IAcceptSQLServerLienseTerms",
     cwd       => $profile_mssql::media,
     path      => $profile_mssql::media,
     logoutput => true,
