@@ -69,7 +69,6 @@ class profile_mssql::install {
     logoutput => true,
     creates   => $instancedir,
     timeout   => 1200,
-    require   => [ File['C:\sql2012install.ini'],
-                   Dism['NetFx3'] ],
+    require   => [ File['C:\sql2012install.ini'], Windows_isos['SQLServer'], Dism['NetFx3'] ],
   }
 }
