@@ -65,8 +65,8 @@ RSINSTALLMODE="DefaultNativeMode"
 ERRORREPORTING="False"
 
 ; Specify the installation directory. 
-<% if @profile_mssql::instancedir -%>
-INSTANCEDIR="<%= @profile_mssql::instancedir %>"
+<% if @instancedir -%>
+INSTANCEDIR="<%= @instancedir %>"
 <% end -%>
 
 ; Agent account name 
