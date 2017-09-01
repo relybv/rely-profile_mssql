@@ -2,7 +2,27 @@
 #
 # This class is called from profile_mssql for install.
 #
-class profile_mssql::install {
+class profile_mssql::install
+(
+  # See http://msdn.microsoft.com/en-us/library/ms144259.aspx
+  # Media is required to install
+  $media          = $profile_mssql::params::media,
+  $instancename   = $profile_mssql::params::instancename,
+  $features       = $profile_mssql::params::features,
+  $sapwd          = $profile_mssql::params::sapwd,
+  $agtsvcaccount  = $profile_mssql::params::agtsvcaccount,
+  $agtsvcpassword = $profile_mssql::params::agtsvcpassword,
+  $assvcaccount   = $profile_mssql::params::assvcaccount,
+  $assvcpassword  = $profile_mssql::params::assvcpassword,
+  $rssvcaccount   = $profile_mssql::params::rssvcaccount,
+  $rssvcpassword  = $profile_mssql::params::rssvcpassword,
+  $sqlsvcaccount  = $profile_mssql::params::sqlsvcaccount,
+  $sqlsvcpassword = $profile_mssql::params::sqlsvcpassword,
+  $instancedir    = $profile_mssql::params::instancedir,
+  $ascollation    = $profile_mssql::params::ascollation,
+  $sqlcollation   = $profile_mssql::params::sqlcollation,
+  $admin          = $profile_mssql::params::admin,
+) {
   # prevent direct use of subclass
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
