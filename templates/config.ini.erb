@@ -65,7 +65,7 @@ RSINSTALLMODE="DefaultNativeMode"
 ERRORREPORTING="False"
 
 ; Specify the installation directory. 
-<% if @instancedir -%>
+<% if @profile_mssql::instancedir -%>
 INSTANCEDIR="<%= @profile_mssql::instancedir %>"
 <% end -%>
 
