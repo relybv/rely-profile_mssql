@@ -16,59 +16,60 @@ class profile_mssql::install {
     command   => file('profile_mssql/format_all_raw.ps1'),
     provider  => powershell,
     logoutput => true,
-    before    => Class['windows_sql'],
+    before    => Pget['download mssql'],
   }
 
   pget { 'download mssql':
     source => $::profile_mssql::params::isourl,
     target => 'C:\windows\temp',
-    before => Class['windows_sql'],
+  }
+
+  windows_isos{'SQLServer':
+    ensure   => present,
+    isopath  => 'C:\\windows\\temp\\en_sql_server_2012_enterprise_edition_with_service_pack_2_x64_dvd_4685849.iso',
+    require  => Pget['download mssql'],
   }
 
   # install sql server
-class {'windows_sql':
-  features            => 'SQL,TOOLS',
-#  pid                 => 'YFC4R-BRRWB-TVP9Y-6WJQ9-MCJQ7',
-#  sqlsysadminaccounts => 'SQLAdmin',
-#  agtsvcaccount       => 'svc_sqlagt',
-#  agtsvcpassword      => 'MySup3rGre@tp@ssw0rDO3nOT',
-  isopath             => 'C:\\windows\temp\en_sql_server_2012_enterprise_edition_with_service_pack_2_x64_dvd_4685849.iso',
-#  sqlpath              => 'D:\\',
-#  sqlsvcaccount       => 'svc_sqlsvc',
-#  sqlsvcpassword      => 'MySup3rGre@tp@ssw0rDO3nOT',
-  securitymode        => 'sql',
-  sapwd               => 'MySup3rGre@tp@ssw0rDO3nOT',
-  mode                => 'master',
-}
-#  class {'windows_sql':
-#    features            => $::profile_mssql::params::features,
-#    instancedir         => $::profile_mssql::params::instancedir,
-#    sqluserdbdir        => $::profile_mssql::params::sqluserdbdir,
-#    sqluserdblogdir     => $::profile_mssql::params::sqluserdblogdir,
-#    sqltempdbdir        => $::profile_mssql::params::sqltempdbdir,
-#    sqltempdblogdir     => $::profile_mssql::params::sqltempdblogdir,
-#    sqlsysadminaccounts => $::profile_mssql::params::sqlsysadminaccounts,
-#    agtsvcaccount       => $::profile_mssql::params::agtsvcaccount,
-#    sqlsvcaccount       => $::profile_mssql::params::sqlsvcaccount,
-#    pid                 => $::profile_mssql::params::pid,
-#    isopath             => $::profile_mssql::params::isopath,
-#    securitymode        => $::profile_mssql::params::securitymode,
-#    sapwd               => $::profile_mssql::params::sapwd,
-#    mode                => $::profile_mssql::params::mode,
-#  }
+  User {
+    ensure   => present,
+    before => Exec['install_mssql2012'],
+  }
 
-#  class { '::sqlserver':
-#    backup_dir       => $::profile_mssql::params::backup_dir,
-#    database_dir     => $::profile_mssql::params::database_dir,
-#    database_log_dir => $::profile_mssql::params::database_log_dir,
-#    edition          => $::profile_mssql::params::edition,
-#    features         => $::profile_mssql::params::features,
-#    force_english    => $::profile_mssql::params::force_english,
-#    instance_dir     => $::profile_mssql::params::instance_dir,
-#    instance_name    => $::profile_mssql::params::instance_name,
-#    license          => $::profile_mssql::params::license,
-#    license_type     => $::profile_mssql::params::license_type,
-#    sa_password      => $::profile_mssql::params::sa_password,
-#    source           => $::profile_mssql::params::source,
-#  }
+  user { 'SQLAGTSVC':
+    comment  => 'SQL 2012 Agent Service.',
+    password => $::agtsvcpassword,
+  }
+  user { 'SQLASSVC':
+    comment  => 'SQL 2012 Analysis Service.',
+    password => $assvcpassword,
+  }
+  user { 'SQLRSSVC':
+    comment  => 'SQL 2012 Report Service.',
+    password => $rssvcpassword,
+  }
+  user { 'SQLSVC':
+    comment  => 'SQL 2012 Service.',
+    groups   => 'Administrators',
+    password => $sqlsvcpassword,
+  }
+
+  file { 'C:\sql2012install.ini':
+    content => template('profile_mssql/config.ini.erb'),
+  }
+
+  dism { 'NetFx3':
+    ensure => present,
+  }
+
+  exec { 'install_mssql2012':
+    command   => "${media}\\setup.exe /Action=Install /IACCEPTSQLSERVERLICENSETERMS /Q /HIDECONSOLE /CONFIGURATIONFILE=C:\\sql2012install.ini /SAPWD=\"${sapwd}\" /SQLSVCPASSWORD=\"${sqlsvcpassword}\" /AGTSVCPASSWORD=\"${agtsvcpassword}\" /ASSVCPASSWORD=\"${assvcpassword}\" /RSSVCPASSWORD=\"${rssvcpassword}\"",
+    cwd       => $media,
+    path      => $media,
+    logoutput => true,
+    creates   => $instancedir,
+    timeout   => 1200,
+    require   => [ File['C:\sql2012install.ini'],
+                   Dism['NetFx3'] ],
+  }
 }

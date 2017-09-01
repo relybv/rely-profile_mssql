@@ -94,7 +94,7 @@
   }
   Write-Host "$puppet_module successfully installed."
 
-  $puppet_module = "jriviere/windows_sql"
+  $puppet_module = "puppetlabs/dism"
   $puppet_arg = $puppet_modinst + $puppet_module
   $process = Start-Process -FilePath $puppet_path -ArgumentList $puppet_arg -Wait -PassThru -NoNewWindow
   if ($process.ExitCode -ne 0) {
