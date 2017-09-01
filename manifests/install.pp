@@ -29,6 +29,7 @@ class profile_mssql::install
   }
   notice("Running with media $profile_mssql::media")
   notice(" dir is $profile_mssql::instancedir")
+  notice("paaswd is: $::profile_mssql::sqlsvcpassword")
   # install network time sync
   include 'winntp'
 
