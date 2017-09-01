@@ -63,7 +63,7 @@ class profile_mssql::install {
   }
 
   exec { 'install_mssql2012':
-    command   => "${profile_mssql::media}setup.exe /ConfigurationFile=C:\\sql2012install.ini /QS /IAcceptSQLServerLienseTerms",
+    command   => "${profile_mssql::media}setup.exe /ConfigurationFile=C:\\sql2012install.ini /QS /IAcceptSQLServerLicenseTerms",
     cwd       => $profile_mssql::media,
     path      => $profile_mssql::media,
     logoutput => true,
