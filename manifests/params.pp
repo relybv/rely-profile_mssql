@@ -23,7 +23,7 @@
 class profile_mssql::params {
   $productionlevel = 'production'
   $instancename   = 'MSSQLSERVER'
-  $features       = 'SQL,TOOLS'
+  $features       = 'SQLENGINE,BIDS,CONN,SSMS,ADV_SSMS'
   $sapwd          = 'Sql!@as#2012demo' 
   $agtsvcaccount  = 'SQLAGTSVC'
   $agtsvcpassword = 'Sql!@gt#2012demo'
